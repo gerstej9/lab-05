@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+
+#photo-template {
+    display:none;
+}
+
+#templateSelector {
+    display:none;
+}

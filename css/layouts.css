@@ -1,0 +1,31 @@
+ul{
+    max-height: 2000px;
+    max-width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+li {
+/*     flex-wrap: wrap;
+    flex-direction: column; */
+    display: block;
+    justify-content: center;
+    text-align: center;
+    border: 3px solid black;
+    margin: 10px;
+    padding: 5px;
+    width: 25%;
+    height: 300px;
+}
+
+img {
+    width: auto;
+    max-width: 95%;
+    height: 200px;
+}
+
+
+footer{
+    clear:left;
+}
