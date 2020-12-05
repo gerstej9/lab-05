@@ -100,7 +100,6 @@ const showImages = (event) => {
     animals1.forEach(animal => animal.render());
   } else {
     page = "Page 2";
-    console.log(page);
     animals2.forEach(animal => animal.render());
   }
   return page;
@@ -133,7 +132,6 @@ function sortImageByTitle(leftVal, rightVal) {
 const selectImages = (event) => {
   const liKeyword = event.target.value;
   if(event.target.value !== 'default'){
-    console.log(event.target.value);
     $('li').hide();
     $(`li[value^='${event.target.value}']`).show();
   }
