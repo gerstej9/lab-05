@@ -53,6 +53,7 @@ $.ajax({
   animals2.sort(sortImageByHorn);
   animals2.forEach(animal => animal.render());
   $('.page2').hide();
+  playSound();
 });
 
 $.ajax({
@@ -64,6 +65,7 @@ $.ajax({
   // initialSort();
   animals1.sort(sortImageByHorn);
   animals1.forEach(animal => animal.render());
+  playSound();
 });
 
 
@@ -78,15 +80,6 @@ Animal.prototype.render = function () {
     $newAnimalOption.text(this.keyword);
     $('#keyword').append($newAnimalOption);
   }
-  $('img').on('click', e =>{
-
-    const sound = new Audio();
-    sound.volume = 0.1;
-    sound.src = "./sound/cat.wav"
-    sound.oncanplaythrough = function(){
-      sound.play();
-    }
-  });
 };
 
 $('#photo-template').hide();
@@ -125,7 +118,16 @@ function sortImageByTitle(leftVal, rightVal) {
   }
 }
 
-
+function playSound(){
+  $('li').on('click', () => {
+    const sound = new Audio();
+    sound.volume = 0.1;
+    sound.src = "./sound/cat.wav"
+    sound.oncanplaythrough = function(){
+      sound.play();
+    }
+  });
+}
 
 
 
@@ -154,6 +156,7 @@ $('#horns, #title').on('click', event => {
   $('ul').empty();
   if(page === 'Page 1') animals1.forEach(animal => animal.render());
   if(page === 'Page 2') animals2.forEach(animal => animal.render());
+  playSound();
 });
 
 
