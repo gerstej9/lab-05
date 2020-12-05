@@ -78,6 +78,15 @@ Animal.prototype.render = function () {
     $newAnimalOption.text(this.keyword);
     $('#keyword').append($newAnimalOption);
   }
+  $('img').on('click', e =>{
+
+    const sound = new Audio();
+    sound.volume = 0.1;
+    sound.src = "./sound/cat.wav"
+    sound.oncanplaythrough = function(){
+      sound.play();
+    }
+  });
 };
 
 $('#photo-template').hide();
@@ -128,9 +137,11 @@ const selectImages = (event) => {
     $('li').hide();
     $(`li[value^='${event.target.value}']`).show();
   }
-  // $('#keyword option:selected').text();
-  // $('ul').empty();
 };
+
+
+
+  
 
 $('#keyword').on('change', selectImages);
 $('nav').on('click', showImages);
