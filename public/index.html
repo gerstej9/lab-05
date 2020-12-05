@@ -35,10 +35,24 @@
       <li class="{{page}}" value = {{keyword}}>
         <h2>{{title}}</h2>
         <img src="{{image_url}}" alt="{{title}}">
-        <p>{{description}}</p>
+        <!-- <p>{{description}}</p> -->
       </li>
     </template>
+      <template id = "modal-template">
+        <h2>{{title}}</h2>
+        <p>{{description}}</p>
+      </template>
+      <!-- W3Schools modal content -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <div class = "span-close">
+            <span class="close">&times;</span>
+          </div>
+          <div class = "mustache-modal"></div>
+        </div>
 
+      
+      </div>
       <ul>
 
       </ul>

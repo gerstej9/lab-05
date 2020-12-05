@@ -4,7 +4,7 @@ const animals1 = [];
 const animals2 = [];
 const keywordArray = [];
 let page = 'Page 1';
-let pageOn = 1;
+
 
 
 function Animal(jsonObject, pageNum) {
@@ -16,33 +16,6 @@ function Animal(jsonObject, pageNum) {
   this.page = pageNum;
 }
 
-/* Animal.prototype.render = function () {
-  const $newAnimalLi = $('#photo-template').find('li').clone();
-  $newAnimalLi.attr('class', this.keyword);
-  $newAnimalLi.find('h2').text(this.title);
-  $newAnimalLi.find('img').attr('src', this.image_url);
-  $newAnimalLi.find('p').text(this.description);
-  $('ul').append($newAnimalLi);
-
-  const $newAnimalOption = $('#templateSelector').find('option').clone();
-  if (keywordArray.includes(this.keyword) !== true) {
-    keywordArray.push(this.keyword);
-    $newAnimalOption.attr('value', this.keyword);
-    $newAnimalOption.text(this.keyword);
-    $('select').append($newAnimalOption);
-  }
-}; */
-// const initialSort = () =>{
-//   animals.sort((leftVal, rightVal) => {
-//     if(leftVal.horns > rightVal.horns){
-//       return -1;
-//     }else if (leftVal.horns< rightVal.horns){
-//       return 1;
-//     }else{
-//       return 0;
-//     }
-//   });
-// };
 
 $.ajax({
   url: './data/page-2.json',
@@ -54,6 +27,7 @@ $.ajax({
   animals2.forEach(animal => animal.render());
   $('.page2').hide();
   playSound();
+  showModal();
 });
 
 $.ajax({
@@ -66,6 +40,7 @@ $.ajax({
   animals1.sort(sortImageByHorn);
   animals1.forEach(animal => animal.render());
   playSound();
+  showModal();
 });
 
 
@@ -82,6 +57,12 @@ Animal.prototype.render = function () {
   }
 };
 
+Animal.prototype.renderModal = function () {
+  const template = $('#modal-template').html();
+  const modalHtml = Mustache.render(template, this);
+  $('.mustache-modal').append(modalHtml);
+  };
+
 $('#photo-template').hide();
 
 
@@ -95,6 +76,8 @@ const showImages = (event) => {
     page = "Page 2";
     animals2.forEach(animal => animal.render());
   }
+  playSound();
+  showModal();
   return page;
 };
 
@@ -132,14 +115,46 @@ function playSound(){
 
 
 const selectImages = (event) => {
-  const liKeyword = event.target.value;
   if(event.target.value !== 'default'){
     $('li').hide();
     $(`li[value^='${event.target.value}']`).show();
   }
+  $('img').on('click', event => {
+    $('.modal').css('display', 'block');
+  });
 };
 
 
+function showModal(){
+  $('img').on('click', event => {
+    $('.modal').css('display', 'block');
+    if(page === 'Page 1'){
+      animals1.forEach(animal =>{
+        if(event.target.alt === animal.title){
+          animal.renderModal();
+        }
+      });
+    }else{
+      animals2.forEach(animal =>{
+        if(event.target.alt === animal.title){
+          animal.renderModal();
+        }
+      });
+    }
+  });
+  $('span').on('click', () =>{
+    $('.modal').css('display', 'none');
+    $('.mustache-modal').empty()
+  });
+  $('span').on('click', () =>{
+    $('.modal').css('display', 'none');
+    $('.mustache-modal').empty()
+  });
+    $('span').on('click', () =>{
+    $('.modal').css('display', 'none');
+    $('.mustache-modal').empty()
+  });
+}
 
   
 
@@ -157,6 +172,7 @@ $('#horns, #title').on('click', event => {
   if(page === 'Page 1') animals1.forEach(animal => animal.render());
   if(page === 'Page 2') animals2.forEach(animal => animal.render());
   playSound();
+  showModal();
 });
 
 
