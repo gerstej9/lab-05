@@ -54,6 +54,26 @@
 * Finish time: 6:40
 * Actual time needed to complete: 85 minutes
 
+## Lab 05
+
+## Number and name of feature: Feature 1 (Day 3): Link Gallery of Horns to server
+* Estimate of time needed to complete:  60 min
+* Start time: 3:30 PM
+* Finish time: 4:15 PM
+* Actual time needed to complete: 45 minutes
+
+## Number and name of feature: Feature 2 (Day 3): Add sounds on click to images
+* Estimate of time needed to complete:  60 min
+* Start time: 4:15 PM
+* Finish time: 6:00 PM
+* Actual time needed to complete: 105 minutes
+
+## Number and name of feature: Feature 3 (Day 3): Add modal box to display description of image on image click
+* Estimate of time needed to complete:  60 min
+* Start time: 6:00 PM
+* Finish time: 7:15 PM
+* Actual time needed to complete: 75 minutes
+
 
 ### Contributions
 * Eric Meyer reset.css code
